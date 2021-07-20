@@ -1,8 +1,8 @@
 name: scrape
 on:
  workflow_dispatch:
- schedule:
-  - chron: '0 5,17 * * *'
+  schedule:
+   - chron: '0 5,17 * * *'
 jobs:
  scrape:
    runs-on: ubuntu-latest
