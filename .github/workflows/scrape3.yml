@@ -16,7 +16,7 @@ jobs:
        with:
          python-version: '3.9'
      - name: Install all necessary packages
-       run: pip install requests selenium ics pandas
+       run: pip install webdriver-manager requests selenium pandas
      - name: Run the scraping script
        run: python scraper.py
      - name: Commit and push if content changed
