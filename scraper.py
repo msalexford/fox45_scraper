@@ -15,8 +15,11 @@ homepage = driver.find_elements_by_xpath("//*[contains(@id, 'js-TopStories-Conta
 for link in homepage:
     print(link.text)
     
-# Formerly - headlines = link.text.splitlines()
-headlines = homepage.text.splitlines()
+# headlines = link.text.splitlines()
+headlines = link.splitlines()
+
+# AttributeError: 'list' object has no attribute 'text'
+
 
 df = pd.DataFrame(headlines)
 
