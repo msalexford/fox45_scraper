@@ -15,7 +15,9 @@ homepage = driver.find_elements_by_xpath("//*[contains(@id, 'js-TopStories-Conta
 for link in homepage:
     print(link.text)
     
-headlines = link.text.splitlines()
+# Formerly - headlines = link.text.splitlines()
+headlines = homepage.text.splitlines()
+
 df = pd.DataFrame(headlines)
 
 df.to_csv('fox45_headlines.csv', sep=',', header=None, index=None)
