@@ -12,14 +12,11 @@ driver = webdriver.Chrome(ChromeDriverManager().install(), options=headless_opti
 driver.get('https://foxbaltimore.com/')
 
 homepage = driver.find_elements_by_xpath("//*[contains(@id, 'js-TopStories-Container')]")
+
 for link in homepage:
     print(link.text)
     
-# headlines = link.text.splitlines()
-headlines = link.splitlines()
-
-# AttributeError: 'list' object has no attribute 'text'
-
+headlines = link.text.splitlines()
 
 df = pd.DataFrame(headlines)
 
