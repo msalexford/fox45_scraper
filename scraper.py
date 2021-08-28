@@ -20,4 +20,6 @@ headlines = link.text.splitlines()
 
 df = pd.DataFrame(headlines)
 
-df.to_csv('fox45_headlines.csv', sep=',', header=None, index=None)
+pd.read_csv('fox45_headlines.csv').append(df).drop_duplicates().to_csv('fox45_headlines.csv', sep=',', header=None, index=None)
+
+# df.to_csv('fox45_headlines.csv', sep=',', header=None, index=None)
