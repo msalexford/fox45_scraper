@@ -12,8 +12,6 @@ driver = webdriver.Chrome(ChromeDriverManager().install(), options=headless_opti
 driver.get('https://foxbaltimore.com/')
 driver.set_page_load_timeout(30)
 
-fox_results = []
-
 scraped_date = driver.find_element_by_xpath('/html/head/meta[30]').get_attribute('content')
 
 homepage = driver.find_elements_by_xpath("//*[contains(@id, 'js-TopStories-Container')]")
@@ -23,13 +21,11 @@ for link in homepage:
     
 headlines = link.text.splitlines()
 
-temporary_data = {
+scraped_fox_headlines = {
     'headline': headlines,
-    'publish_date': scraped_date
+    'date': scraped_date
 }
 
-fox_results.append(temporary_data)
+df = pd.DataFrame(scraped_fox_headlines)
 
-df = pd.DataFrame(fox_results)
-
-pd.read_csv('fox45_headlines.csv').append(df).drop_duplicates().to_csv('fox45_headlines.csv', sep=',', header=None, index=None)
+pd.read_csv('fox45_headlines.csv').append(df).drop_duplicates().to_csv('fox45_headlines.csv')
